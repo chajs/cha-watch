@@ -1,0 +1,37 @@
+{
+  "name": "cha-watch",
+  "version": "0.1.0",
+  "description": "Watch extension for cha.",
+  "main": "lib/watch.js",
+  "scripts": {
+    "test": "node ./test/watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chajs/cha-watch.git"
+  },
+  "keywords": [
+    "cha",
+    "extension",
+    "watch"
+  ],
+  "author": "yuanyan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chajs/cha-watch/issues"
+  },
+  "homepage": "https://github.com/chajs/cha-watch",
+  "dependencies": {
+    "gaze": "^0.5.1",
+    "es6-promise": "^0.1.1",
+    "lodash": "^2.4.1"
+  },
+  "devDependencies": {
+    "execution": "~0.0.3",
+    "record": "~0.2.0",
+    "coffee-script": "~1.7.1",
+    "uglify-js": "~2.4.12",
+    "mkdirp": "^0.3.5",
+    "cha": "^0.1.1"
+  }
+}
