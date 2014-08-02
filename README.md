@@ -2,20 +2,34 @@ cha-watch
 =========
 > Watch extension for cha.
 
-## How to run watch task?
+## Install
+
+Install watch extension for cha:
+```sh
+npm install cha-watch --save-dev
+```
+
+## Usage
+
+Once the extension has been installed, it should required inside your scripts with this line of JavaScript:
+```js
+cha.watch = require('cha-watch')
+```
+
+Example script:
 
 ```js
 var cha = require('cha')
-var tasks = require('./tasks')
 
-// Require watch extension.
 cha.watch = require('cha-watch')
 
-cha.in('read',    tasks.read)
-   .in('cat',     tasks.cat)
-   .in('coffee',  tasks.coffee)
-   .in('write',   tasks.write)
-   .in('uglifyjs',tasks.uglifyjs)
+// Register tasks that should chaining.
+cha.in('reader',    require('task-reader'))
+    .in('coffee',   require('task-coffee'))
+    .in('combine',  require('task-combine'))
+    .in('writer',   require('task-writer'))
+    .in('uglifyjs', require('task-uglifyjs'))
+
 
 // Start watcher.
 cha.watch('./fixtures/coffee/*.coffee', {
@@ -23,11 +37,11 @@ cha.watch('./fixtures/coffee/*.coffee', {
     immediately: true
 }, function(filepath, event, watched){
 
-    cha().read(watched)
+    cha().reader(watched)
         .coffee()
         .cat()
         .uglifyjs()
-        .write('./out/foobar3.js')
+        .writer('./out/foobar3.js')
 })
 
 ```
